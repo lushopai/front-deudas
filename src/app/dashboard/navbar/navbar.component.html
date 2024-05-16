@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <span>Deudas</span>
+  <div class="nav-container">
+    <div class="nav-items">
+      <button *ngFor="let item of menu" [routerLink]="item.redirect" mat-button>{{item.nombre}}</button>
+    </div>
+    <button (click)="logout()" mat-icon-button class="logout-button" aria-label="Example icon-button with heart icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

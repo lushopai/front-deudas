@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           'ya estas autenticado!',
         'info'
       );
-      this.router.navigate(['/deudas']);
+      this.router.navigate(['/dashboard']);
     }
   }
 

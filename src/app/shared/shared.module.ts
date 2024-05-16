@@ -24,6 +24,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -50,6 +51,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatGridListModule,
     MatSelectModule,
     MatDialogModule,
+    MatSidenavModule
   ],
   exports:[
     MatAutocompleteModule,
@@ -70,7 +72,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCardModule,
     MatGridListModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }

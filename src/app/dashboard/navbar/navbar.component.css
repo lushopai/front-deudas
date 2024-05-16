@@ -1,0 +1,16 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.logout-button {
+  position: absolute;
+  right: 0;
+}

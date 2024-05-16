@@ -12,10 +12,14 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { SharedModule } from './shared/shared.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AuthInterceptor } from './security/interceptors/authInterceptor';
+import { TokenInterceptor } from './security/interceptors/tokenInterceptor';
 
 registerLocaleData(localeES,'es');
 const routes: Routes = [
-  { path: '', redirectTo: '/deudas', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {path:'dashboard', loadChildren: () =>
   import("./dashboard/dashboard.module").then(m => m.DashboardModule)}
@@ -36,12 +40,18 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    FormsModule
+
 
 
 
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' },
+    {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},
+    {provide: HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
