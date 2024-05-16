@@ -17,12 +17,14 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './security/interceptors/authInterceptor';
 import { TokenInterceptor } from './security/interceptors/tokenInterceptor';
 
-registerLocaleData(localeES,'es');
+registerLocaleData(localeES, 'es');
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  {path:'dashboard', loadChildren: () =>
-  import("./dashboard/dashboard.module").then(m => m.DashboardModule)}
+  { path: 'login', component: LoginComponent},
+  {
+    path: 'dashboard', loadChildren: () =>
+      import("./dashboard/dashboard.module").then(m => m.DashboardModule)
+  }
   //Carga perezosa , solo para mostrar esos componentes
 
 
@@ -49,8 +51,8 @@ const routes: Routes = [
 
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' },
-    {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},
-    {provide: HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi:true}
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
